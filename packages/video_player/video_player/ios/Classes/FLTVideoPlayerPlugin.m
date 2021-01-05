@@ -549,13 +549,16 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     BOOL useCache = input.useCache;
     BOOL enableCache = _maxCacheSize > 0 && _maxCacheFileSize > 0 && useCache;
     if (enableCache) {
-      NSString* escapedURL = [input.uri
+      /*NSString* escapedURL = [input.uri
           stringByAddingPercentEncodingWithAllowedCharacters:NSMutableCharacterSet
                                                                  .alphanumericCharacterSet];
-
       player = [[FLTVideoPlayer alloc] initWithURL:[NSURL URLWithString:escapedURL]
                                       frameUpdater:frameUpdater
-                                       enableCache:enableCache];
+                                       enableCache:enableCache];*/
+
+      player = [[FLTVideoPlayer alloc] initWithURL:[NSURL URLWithString:input.uri]
+                                frameUpdater:frameUpdater
+                                  enableCache:enableCache];
     } else {
       player = [[FLTVideoPlayer alloc] initWithURL:[NSURL URLWithString:input.uri]
                                       frameUpdater:frameUpdater];
